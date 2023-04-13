@@ -28,10 +28,13 @@ The saveToDatabase() method has been implemented in src/main/scala/com/etl/chall
 * userLogin
 * activity
 
+Exception handling has been enabled in the code for graceful degradation of the application.
 
 
-## Part2 SQL 
+## Part2  
 
-The file `sqlSolutions.sql` in the path : sql/ddl/ provides the solution.
+The file `sqlSolutions.sql` in the path : sql/ddl/ provides the efficient SQL queries. Some key optimisations used while implementing the SQL solutions are:
+* Windowing Functions such as Row_num
+* count(1) instead of count(*)
 
 
