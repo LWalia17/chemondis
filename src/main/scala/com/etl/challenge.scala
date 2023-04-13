@@ -38,13 +38,10 @@ object Challenge extends App {
   
   
   def saveToDatabase(data: Iterator[String]) = {
-
-try {
-val statement = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE)
+  try {
+   val statement = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE)
 
    for(i <- data){
-   
-
     var prep = conn.prepareStatement("INSERT INTO public.user_login values (?,  ? , ? )  ")
     prep.setString(1, i.split(';')(0))
     prep.setString(2,i.split(';')(10))
@@ -71,14 +68,11 @@ val statement = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONC
    }
 
 } 
-catch  
-   case ex : SQLException => 
-            {
-if ex.getMessage.contains("duplicate") then println("skip")
-            }
+  catch  
+   case ex : SQLException =>  {if ex.getMessage.contains("duplicate") then println("Duplicate records cannot be inserted for User ID")}
    finally {
      conn.close()
-}
+    }
 }
   
  
