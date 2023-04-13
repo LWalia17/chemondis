@@ -30,6 +30,9 @@ The `saveToDatabase()` method has been implemented in src/main/scala/com/etl/cha
 
 Exception handling has been enabled in the code for graceful degradation of the application.
 
+Data Model:
+
+<img width="704" alt="image" src="https://user-images.githubusercontent.com/121966833/231776598-a36ddc91-7571-4e1f-a297-27652f538e7e.png">
 
 ## Part2  
 
