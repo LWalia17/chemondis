@@ -34,6 +34,10 @@ Data Model:
 
 <img width="704" alt="image" src="https://user-images.githubusercontent.com/121966833/231776598-a36ddc91-7571-4e1f-a297-27652f538e7e.png">
 
+* user - Userid linked with User PII information (Names)
+* userLogin - Userid linked with Browser and IP
+* activity - Each activity associated with the Timestamp
+
 ## Part2  
 
 The file `sqlSolutions.sql` in the path : sql/ddl/ provides the efficient SQL queries. Some key optimisations used while implementing the SQL solutions are:
