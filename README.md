@@ -22,7 +22,7 @@ The following steps will be used to set up the environment:
 
 ## Part1 
 
-The saveToDatabase() method has been implemented in src/main/scala/com/etl/challenge.scala. This method transforms the data obtained from generateRandomData() method and saves the data into three tables as following:
+The `saveToDatabase()` method has been implemented in src/main/scala/com/etl/challenge.scala. This method transforms the data obtained from `generateRandomData()` method and saves the data into three tables as following:
 
 * user 
 * userLogin
