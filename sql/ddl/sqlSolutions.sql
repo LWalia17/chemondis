@@ -50,7 +50,17 @@
           
           
  --Query 5
- 
+ select		category ,
+ 		label, 
+		 action,
+		 count(1)  
+from 
+		public.activity c 
+group by 
+		category , label, action
+order by
+		count(1)
+desc  limit 10
  
  --Query 6
  
