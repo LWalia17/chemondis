@@ -38,15 +38,17 @@ object Challenge extends App {
     s"$ip;$date;$firstName $lastName;$userId;$category;$action;$label;$searchTerm;$browser"
   }
   
-  
-  def saveToDatabase(data: Iterator[String]) = {
-  try {
-   val statement = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE)
+ def saveToDatabase(data: Iterator[String]) = {
+
+try {
+val statement = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE)
 
    for(i <- data){
+
+
     var prep = conn.prepareStatement("INSERT INTO public.user_login values (?,  ? , ? )  ")
-    prep.setString(1, i.split(';')(0))
     prep.setString(2,i.split(';')(10))
+    prep.setString(1, i.split(';')(0))
     prep.setInt(3, i.split(';')(3).toInt)
 
     prep.executeUpdate
@@ -60,21 +62,27 @@ object Challenge extends App {
     prep.setInt(6, i.split(';')(3).toInt)
     prep.executeUpdate
 
-    //  CONFLICT DO NOTHING to ensure PK contraints holds but skips the row 
-    prep = conn.prepareStatement("INSERT INTO public.usert1 values (?,  ? , ?)  ON CONFLICT DO NOTHING ")
+
+      prep = conn.prepareStatement("INSERT INTO public.user values (?,  ?)  ON CONFLICT DO NOTHING ")
+
+   // println(i.split(';')(3))
+   // print(i.split(';')(4))
     prep.setInt(1,i.split(';')(3).toInt)
     prep.setString(2,i.split(';')(2))
-    prep.setString(3, i.split(';')(0))
+   // prep.setString(3, i.split(';')(0))
     prep.executeUpdate
 
    }
 
-} 
-  catch  
-   case ex : SQLException =>  {if ex.getMessage.contains("duplicate") then println("Duplicate records cannot be inserted for User ID")}
+}
+catch
+   case ex : SQLException =>
+            {
+if ex.getMessage.contains("duplicate") then println("skip")
+            }
    finally {
-     conn.close()
-    }
+    // conn.close()
+}
 }
   
  
