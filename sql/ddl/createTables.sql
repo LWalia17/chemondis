@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS public.activity (
   label  VARCHAR(120) NULL,
   action  VARCHAR(120)  NULL,
   search  VARCHAR(120)  NOT NULL,
-  timestamp  VARCHAR(120) NOT NULL,
+  mod_ts  VARCHAR(120) NOT NULL,
   userid INT NULL)
 
 
