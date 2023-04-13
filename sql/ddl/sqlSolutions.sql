@@ -50,35 +50,40 @@
           
           
  --Query 5
- select		category ,
- 		label, 
-		 action,
-		 count(1)  
+ select		
+ 	category ,
+ 	label, 
+	 action,
+	 count(1)  
 from 
-		public.activity c 
+	public.activity c 
 group by 
-		category , label, action
-order by
-		count(1)
+	category,
+	label,
+	action
+order by 
+	count(1)
 desc  limit 10
  
  --Query 6
  
  select   search, 
-		      date
+	  searchdate
 from
 (select
+
           Row_number()
            OVER 
+--Partition by each date 
            ( PARTITION BY date(TO_TIMESTAMP(timestamp, 'YYYY-MM-DD"T"HH24:MI:SS'))
-             ORDER BY TO_TIMESTAMP(timestamp, 'YYYY-MM-DD"T"HH24:MI:SS'))RN,
-          TO_TIMESTAMP(timestamp, 'YYYY-MM-DD"T"HH24:MI:SS'),
-          date(TO_TIMESTAMP(timestamp, 'YYYY-MM-DD"T"HH24:MI:SS')) as Date,
+--order by respective timestamps of each date 
+             ORDER BY TO_TIMESTAMP(timestamp, 'YYYY-MM-DD"T"HH24:MI:SS')) RN,
+          date(TO_TIMESTAMP(timestamp, 'YYYY-MM-DD"T"HH24:MI:SS')) as searchDate,
           search
  from  
           public.activity  c ) x
  where 
- 		   RN = 1
+ 	  RN = 1
 
           
   
