@@ -78,4 +78,17 @@ object Challenge extends App {
 }
   
  
+ 
+  def main(args: Array[String]) = {
+  println("Connecting to Postgres connector")
+  classOf[org.postgresql.Driver]
+  val con_st = "jdbc:postgresql://10.0.0.1:5432/DBNAME?user=USER&password=PASSWORD"
+  val conn = DriverManager.getConnection(con_st)
+
+  saveToDatabase(Iterator.fill(300)(generateRandomData))
+    }
+
+ 
+ 
+}
   
