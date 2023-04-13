@@ -3,6 +3,8 @@ object Challenge extends App {
 
   import scala.util.Random
   import java.time.{LocalDateTime, Instant, ZoneId}
+  import java.sql.{Connection, DriverManager, ResultSet}
+  import java.sql.{SQLException, Statement}
 
   val categories = List("category1", "category2", "category3")
   val actions = List("action1", "action2", "", "action3")
