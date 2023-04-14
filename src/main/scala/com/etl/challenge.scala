@@ -38,6 +38,8 @@ object Challenge extends App {
     s"$ip;$date;$firstName $lastName;$userId;$category;$action;$label;$searchTerm;$browser"
   }
   
+  saveToDatabase(Iterator.fill(3000)(generateRandomData))
+
   def saveToDatabase(data: Iterator[String]) = {
   var conn: Connection = null
   try {
