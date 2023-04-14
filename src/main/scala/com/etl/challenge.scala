@@ -86,7 +86,7 @@ catch
 if ex.getMessage.contains("duplicate") then println("skip")
             }
    finally {
-    // conn.close()
+     conn.close()
 }
 }
   
