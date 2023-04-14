@@ -39,9 +39,10 @@ object Challenge extends App {
   }
   
   def saveToDatabase(data: Iterator[String]) = {
+  var conn: Connection = null
   try {
     val con_st = "jdbc:postgresql://10.0.0.1:5432/DBNAME?user=USER&password=PASSWORD"
-    val conn = DriverManager.getConnection(con_st)
+    conn = DriverManager.getConnection(con_st)
     print("conn:"+conn)
 
     val statement = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE)
